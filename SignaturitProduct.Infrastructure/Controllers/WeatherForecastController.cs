@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace SignaturitProduct.Controllers
+namespace SignaturitProduct.Infrastructure.Controllers
 {
     [ApiController]
     [Route("[controller]")]

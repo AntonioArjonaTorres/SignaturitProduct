@@ -1,4 +1,4 @@
-namespace SignaturitProduct
+namespace SignaturitProduct.Infrastructure
 {
     public class WeatherForecast
     {
