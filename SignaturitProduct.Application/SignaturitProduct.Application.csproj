@@ -7,4 +7,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SignaturitProduct.Domain\SignaturitProduct.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
