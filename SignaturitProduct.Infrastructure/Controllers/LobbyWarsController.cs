@@ -23,9 +23,13 @@ namespace SignaturitProduct.Infrastructure.Controllers
 
         // POST: LobbyWars/NecessaryToWin
         [HttpPost("NecessaryToWin", Name = "Necessary to win")]
-        public ActionResult NecessaryToWin()
+        public ActionResult NecessaryToWin(ApiRequest apiRequest)
         {
-            return Ok();
+            TrialHowToWin trialHowToWin = new TrialHowToWin(apiRequest);
+            this.apiResponse = trialHowToWin.getNecessaryToWin();
+
+            if (this.apiResponse.Error) return BadRequest(this.apiResponse.ResponseText);
+            else return Ok(this.apiResponse.ResponseText);
         }
     }
 }
