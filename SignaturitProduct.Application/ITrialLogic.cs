@@ -7,5 +7,6 @@ namespace SignaturitProduct.Application
         public string startBattle(ApiRequest inputData);
         public string getWinnerSign(ApiRequest inputData);
         public int getSignatureValue(string signatures);
+        public string getValidCharsForBattle();
     }
 }

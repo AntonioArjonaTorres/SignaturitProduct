@@ -6,5 +6,7 @@ namespace SignaturitProduct.Application
     {
         public ApiResponse prepareBattle();
         public bool validateInput();
+        public bool checkMaxMinCharacters();
+        public bool allowedCharacters();
     }
 }
