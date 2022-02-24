@@ -3,7 +3,7 @@ using SignaturitProduct.Domain;
 
 namespace SignaturitProduct.Application.Tests
 {
-    public class TrialBattleTests
+    public class TrialHowToWinTests
     {
         //Testing checkMaxMinCharacters() function
         [Fact]
@@ -11,9 +11,9 @@ namespace SignaturitProduct.Application.Tests
         {
             //Arrange
             ApiRequest apiRequest = new ApiRequest();
-            TrialBattle trialBattle = new TrialBattle(apiRequest);
+            TrialHowToWin trialHowToWin = new TrialHowToWin(apiRequest);
             //Act
-            var actionResult = trialBattle.checkMaxMinCharacters();
+            var actionResult = trialHowToWin.checkMaxMinCharacters();
             //Assert
             var resultError = actionResult;
             Assert.False(resultError);
@@ -24,43 +24,43 @@ namespace SignaturitProduct.Application.Tests
         {
             //Arrange
             ApiRequest apiRequest = new ApiRequest();
-            apiRequest.Defendant = "KNN";
-            TrialBattle trialBattle = new TrialBattle(apiRequest);
+            apiRequest.Defendant = "#NN";
+            TrialHowToWin trialHowToWin = new TrialHowToWin(apiRequest);
             //Act
-            var actionResult = trialBattle.checkMaxMinCharacters();
+            var actionResult = trialHowToWin.checkMaxMinCharacters();
             //Assert
             var resultError = actionResult;
             Assert.False(resultError);
         }
 
         [Fact]
-        public void CheckMaxMinCharacters_success_all_characters()
+        public void CheckMaxMinCharacters_Success_All_Characters()
         {
             //Arrange
             ApiRequest apiRequest = new ApiRequest();
-            apiRequest.Defendant = "KNN";
-            apiRequest.Plaintiff = "NNN";
-            TrialBattle trialBattle = new TrialBattle(apiRequest);
+            apiRequest.Defendant = "#NN";
+            apiRequest.Plaintiff = "VNN";
+            TrialHowToWin trialHowToWin = new TrialHowToWin(apiRequest);
             //Act
-            var actionResult = trialBattle.checkMaxMinCharacters();
+            var actionResult = trialHowToWin.checkMaxMinCharacters();
             //Assert
             var resultError = actionResult;
             Assert.True(resultError);
         }
 
         [Fact]
-        public void CheckMaxMinCharacters_success_some_characters()
+        public void CheckMaxMinCharacters_Fails_Not_All_Characters()
         {
             //Arrange
             ApiRequest apiRequest = new ApiRequest();
-            apiRequest.Defendant = "N";
+            apiRequest.Defendant = "N#";
             apiRequest.Plaintiff = "NN";
-            TrialBattle trialBattle = new TrialBattle(apiRequest);
+            TrialHowToWin trialHowToWin = new TrialHowToWin(apiRequest);
             //Act
-            var actionResult = trialBattle.checkMaxMinCharacters();
+            var actionResult = trialHowToWin.checkMaxMinCharacters();
             //Assert
             var resultError = actionResult;
-            Assert.True(resultError);
+            Assert.False(resultError);
         }
 
         //Testing allowedCharacters() function
@@ -69,11 +69,11 @@ namespace SignaturitProduct.Application.Tests
         {
             //Arrange
             ApiRequest apiRequest = new ApiRequest();
-            apiRequest.Defendant = "NQ";
-            apiRequest.Plaintiff = "NNE";
-            TrialBattle trialBattle = new TrialBattle(apiRequest);
+            apiRequest.Defendant = "NQ#";
+            apiRequest.Plaintiff = "QNN";
+            TrialHowToWin trialHowToWin = new TrialHowToWin(apiRequest);
             //Act
-            var actionResult = trialBattle.allowedCharacters();
+            var actionResult = trialHowToWin.allowedCharacters();
             //Assert
             var resultError = actionResult;
             Assert.False(resultError);
@@ -84,11 +84,11 @@ namespace SignaturitProduct.Application.Tests
         {
             //Arrange
             ApiRequest apiRequest = new ApiRequest();
-            apiRequest.Defendant = "KNN";
-            apiRequest.Plaintiff = "NNN";
-            TrialBattle trialBattle = new TrialBattle(apiRequest);
+            apiRequest.Defendant = "KV#";
+            apiRequest.Plaintiff = "KKN";
+            TrialHowToWin trialHowToWin = new TrialHowToWin(apiRequest);
             //Act
-            var actionResult = trialBattle.allowedCharacters();
+            var actionResult = trialHowToWin.allowedCharacters();
             //Assert
             var resultError = actionResult;
             Assert.True(resultError);
@@ -100,14 +100,14 @@ namespace SignaturitProduct.Application.Tests
         {
             //Arrange
             ApiRequest apiRequest = new ApiRequest();
-            apiRequest.Defendant = "";
-            apiRequest.Plaintiff = "NNV";
-            TrialBattle trialBattle = new TrialBattle(apiRequest);
+            apiRequest.Defendant = "##N";
+            apiRequest.Plaintiff = "NNN";
+            TrialHowToWin trialHowToWin = new TrialHowToWin(apiRequest);
             //Act
-            var actionResult = trialBattle.validateInput();
+            var actionResult = trialHowToWin.validateInput();
             //Assert
             var resultError = actionResult;
-            Assert.True(resultError);
+            Assert.False(resultError);
         }
 
         [Fact]
@@ -115,11 +115,11 @@ namespace SignaturitProduct.Application.Tests
         {
             //Arrange
             ApiRequest apiRequest = new ApiRequest();
-            apiRequest.Defendant = "";
-            apiRequest.Plaintiff = "NNV";
-            TrialBattle trialBattle = new TrialBattle(apiRequest);
+            apiRequest.Defendant = "#NN";
+            apiRequest.Plaintiff = "VNN";
+            TrialHowToWin trialHowToWin = new TrialHowToWin(apiRequest);
             //Act
-            var actionResult = trialBattle.validateInput();
+            var actionResult = trialHowToWin.validateInput();
             //Assert
             var resultError = actionResult;
             Assert.True(resultError);

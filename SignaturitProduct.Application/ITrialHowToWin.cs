@@ -6,5 +6,7 @@ namespace SignaturitProduct.Application
     {
         public ApiResponse getNecessaryToWin();
         public bool validateInput();
+        public bool checkMaxMinCharacters();
+        public bool allowedCharacters();
     }
 }
